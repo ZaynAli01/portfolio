@@ -1,0 +1,568 @@
+:root {
+    --bg-color: #081b29;
+    --main-color: #00abf0;
+    --text-color: #333;
+    --second-color: #555;
+    --white-color: #fff;
+    --cover-color: linear-gradient(45deg, #00abf0, #006e9a);
+    --pages-color: linear-gradient(90deg, #fff, #ddd);
+    --border: .125rem solid #00abf0;
+    --box-shadow: 0 0 .6rem rgba(0, 0, 0, .2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden;
+}
+
+.wapper {
+    position: relative;
+    width: 55rem;
+    height: 39rem;
+    padding: 1rem;
+    perspective: 250rem;
+    animation: show 2s forwards;
+}
+
+@keyframes show {
+    0%,30%{
+        opacity: 0;
+        transform: rotate(-20deg);
+    }
+    100%{
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}
+
+.cover {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--cover-color);
+    box-shadow: var(--box-shadow);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    transform-origin: right;
+}
+
+.cover.cover-left {
+    z-index: -1;
+}
+
+.cover.cover-right{
+    z-index: 100;
+    transition: transform 1s cubic-bezier(.645, .045, .355, 1);
+}
+
+.cover.cover-right.turn {
+    transform: rotateY(180deg);
+}
+
+.book {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.book .book-page {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: var(--pages-color);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    padding: 1rem;
+}
+
+.portfolio-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.portfolio-page .img-box {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: black;
+    margin-bottom: .8rem;
+}
+
+.portfolio-page .img-box img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: cover;
+    border: var(--border);
+    background-position: top;
+}
+
+.portfolio-page h1 {
+    font-size: 2.5rem;
+}
+
+.portfolio-page h3 {
+    font-size: 1.5rem;
+    color: var(--main-color);
+}
+
+.portfolio-page .social-media {
+    margin: 1rem 0 1rem 0;
+}
+
+.portfolio-page .social-media a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.3rem;
+    height: 2.3rem;
+    background: transparent;
+    border: var(--border);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: var(--main-color);
+    margin-left: .6rem;
+    text-decoration: none;
+    transition: .4s;
+}
+
+.portfolio-page .social-media a:hover {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.portfolio-page p {
+    text-align: justify;
+    margin-bottom: 2rem;
+    font-size: 18px;
+}
+
+ .btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--main-color);
+    border: var(--border);
+    border-radius: 5px;
+    width: 8rem;
+    height: 2.3rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white-color);
+    text-decoration: none;
+    margin-left: 2rem;
+    transition: .5s;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--main-color);
+}
+
+.btn-box .btn:nth-child(2) {
+    background: transparent;
+    color: var(--main-color);
+    transition: .5s;
+}
+
+.btn-box .btn:nth-child(2):hover {
+    background: var(--main-color);
+    color: var(--white-color);
+}
+
+.book-page.page-right {
+    position: absolute;
+    right: 0;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: transform 1s cubic-bezier(.645, .045, .355, 1);
+}
+
+.book-page.page-right h1{
+    text-align: center;
+}
+
+.book-page.page-right.turn {
+    transform: rotateY(-180deg);
+}
+
+
+.book-page .page-front {
+    transform: rotateY(0deg) translateZ(1px);
+}
+
+.book-page .page-back {
+    transform: rotateY(180deg) translateZ(1px);
+}
+
+
+.page-front .title {
+    text-align: center;
+}
+
+.edu-box {
+    margin-top: 30px;
+    padding-left: 20px;
+    border-left: 3px solid var(--main-color);
+}
+
+
+
+.edu-content {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.edu-content::before {
+    position: absolute;
+    content: '';
+    background: var(--main-color);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    left: -32px;
+
+}
+
+.edu-content .year {
+    color: var(--main-color);
+}
+
+.edu-content h3,
+p {
+    margin: 10px 0;
+}
+
+.page-number {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nextprev-btn {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    bottom: 14px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 25px;
+    transition: .4s;
+}
+
+.nextprev-btn:hover {
+    color: var(--main-color);
+}
+
+
+.book-page .page-front,
+.book-page .page-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--pages-color);
+    padding: 20px;
+}
+
+.page-back h1 {
+    text-align: center;
+}
+
+.page-back .nextprev-btn {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    bottom: 14px;
+    left: 20px;
+    cursor: pointer;
+    font-size: 25px;
+    transition: .4s;
+}
+
+.skills-box {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.skills-box .skills-content {
+    flex: 1 1 20rem;
+    margin-bottom: 20px;
+}
+
+.skills-content .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+}
+
+.skills-content h3{
+    margin-bottom: 10px;
+}
+
+.skills-content .content span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    white-space: nowrap;
+    width: 7rem;
+    height: 5rem;
+    border: var(--border);
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.skills-content .content span:hover{
+    background: var(--main-color);
+    color: var(--white-color);
+    box-shadow: 3px 6px 13px #00000069;
+    transform: scale(1.1);
+}
+
+.skills-content .content span:hover i{
+    color: var(--white-color);
+}
+
+.skills-content .content span i{
+    font-size: 35px;
+    color: var(--main-color);
+}
+
+
+.services-box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.services-box .services-content{
+    flex: 1 1 10rem;
+    border: var(--border);
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px 6px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.services-box .services-content:hover{
+    background: var(--main-color);
+    color: var(--white-color);
+    box-shadow: 3px 6px 13px #00000069;
+    transform: scale(1.1);
+}
+
+.services-box .services-content:hover i{
+    color: white;
+}
+
+.services-box .services-content i{
+    font-size: 30px;
+    color: var(--main-color);
+}
+
+.projects-box{
+    display: grid;   
+    grid-template-columns: 180px 180px;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+
+.project-content{
+    position: relative;
+    overflow: hidden;
+    transition: .5s ease;
+    cursor: pointer;
+}
+
+.project-content:hover{
+    box-shadow: 3px 6px 13px #00000069;
+    transform: scale(1.1);
+    border-radius: 10px;
+}
+
+.project-content:hover .content{
+    top: 0;
+    transition: .3s ease;
+}
+
+
+.project-content .image{
+    height: 125px;
+    width: 100%;
+    border: var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.project-content .image:hover img{
+    transition: .4s ease;
+}
+
+.project-content .image img{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    transition: .4s ease;
+}
+
+.project-content .content{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--white-color);
+    width: 100%;
+    height: 100%;
+    top:100%;
+    border-radius: 10px;
+    padding: 10px;
+    background: linear-gradient(356deg, rgba(0,171,240,1) 0%, rgba(27,190,255,1) 55%, rgba(255,0,0,0) 100%);
+}
+
+.content a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: white;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 20px;
+    text-decoration: none;
+    color: var(--main-color);
+    border-radius: 50%;
+}
+
+.content a::before{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    content: 'Live Preveiw';
+    top: 80%;
+    height: 100%;
+    width: 92px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.form input{
+    margin-bottom: 20px;
+    outline: none;
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    background-color: transparent;
+    padding-left: 10px;
+    font-size: 17px;
+}
+
+.form textarea{
+    outline: none;
+    width: 100%;
+    height: 230px;
+    resize: none;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 10px;
+    font-size:17px;
+    margin-bottom: 20px;
+}
+
+.profile{
+    position: absolute;
+    text-decoration: none;
+    right: 15px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--main-color);
+    border-radius: 10px;
+    background: var(--white-color);
+    color: var(--white-color);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.profile:hover{
+    background: var(--main-color);
+    color: var(--white-color);
+}
+
+.profile i{
+    color: var(--main-color);
+    font-size: 20px;
+    transition: .4s;
+}
+
+.profile:hover i{
+    color: var(--white-color);
+}
+
+.profile p{
+    position: absolute;
+    transform: translateY(0);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--main-color);
+    transform: scale(.5);
+    opacity: 0;
+    transition: .4s ease;
+}
+
+.profile:hover p{
+    transform: scale(1);
+    opacity: 1;
+    transform: translateY(-35px);
+}
+
+
